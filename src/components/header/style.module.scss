@@ -1,0 +1,13 @@
+$BACKGROUND_COLOR: #000;
+$TEXT_COLOR: #fff;
+
+.header {
+  background-color: $BACKGROUND_COLOR;
+  color: $TEXT_COLOR;
+  padding: 5px;
+  .title {
+    color: #fff;
+    padding: 10px;
+    margin: 0px;
+  }
+}
