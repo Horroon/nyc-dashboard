@@ -1,3 +1,21 @@
 .main-body {
-  padding: 20px;
+  .chart-container {
+    background: #000;
+    position: absolute;
+    left: 0;
+    height: 90vh !important;
+    width: 320px;
+    top: 0;
+    bottom: 0;
+    color: white;
+    opacity: 0.7;
+    .chart-body {
+      display: block;
+      box-sizing: border-box;
+      height: 482px;
+      width: 300px;
+      background: #6d656b;
+      padding-bottom: 40px;
+    }
+  }
 }

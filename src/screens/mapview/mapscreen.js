@@ -1,33 +1,63 @@
-import React, { Component } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
+import { FindExactColor } from "../../utils/findexactcolor";
+import "./style.scss";
+import { StationContext } from "../../constants/contexts";
 
-const AnyReactComponent = ({ text }) => (
-  <div style={{ height: 30, width: 30, background: "red" }}>{text}</div>
-);
+const Markerview = ({ num_bikes_available, capacity, name, station_id }) => {
+  const [showmodal, setModal] = useState(false);
+  const { mapCenter } = useContext(StationContext);
+  useEffect(() => {
+    mapCenter.station_id === station_id ? setModal(true) : setModal(false);
+  }, [mapCenter.station_id]);
 
-class MapScreen extends Component {
-  static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33,
-    },
-    zoom: 11,
+  return (
+    <div className="marker">
+      {showmodal && (
+        <div className="info-container">
+          <div className="heading">
+            <h1 className="title">{name}</h1>
+            <IoMdClose color="#fff" onClick={() => setModal(false)} />
+          </div>
+          <div className="sub-info">
+            Capacity: {capacity} &nbsp; available bike: {num_bikes_available}
+          </div>
+        </div>
+      )}
+
+      <FaMapMarkerAlt
+        color={FindExactColor({ numberofbikes: num_bikes_available, capacity })}
+        className="marker-pin"
+        onClick={() => setModal(true)}
+      />
+    </div>
+  );
+};
+
+function MapScreen({ stations = [] }) {
+  const { mapCenter } = useContext(StationContext);
+  const defaultProps = {
+    zoom: 12,
   };
-
-  render() {
-    return (
-      // Important! Always set t5he container height explicitly
-      <div style={{ height: "100%", width: "100%" }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: "" }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-        >
-          <AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
-        </GoogleMapReact>
-      </div>
-    );
-  }
+  console.log("mapscreen ", mapCenter);
+  return (
+    <div className="mapscreen">
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "" }} //AIzaSyCLmle3a-g-cwLnJktcDbOlcTyU-J-kMgk"
+        center={mapCenter}
+        zoom={defaultProps.zoom}
+        onChildClick={(key, childprop) =>
+          console.log("key ", key, " childprop ", childprop)
+        }
+      >
+        {stations.map((station) => (
+          <Markerview lat={station.lat} lng={station.lon} {...station} />
+        ))}
+      </GoogleMapReact>
+    </div>
+  );
 }
 
 export default MapScreen;

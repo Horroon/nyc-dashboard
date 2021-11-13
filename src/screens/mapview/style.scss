@@ -1,0 +1,61 @@
+.mapcontainer {
+  height: 90vh;
+  .stationsearch {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    .searchcontainer {
+      width: 50%;
+      margin: auto;
+      padding-top: 10px;
+      .ant-select-show-search {
+        z-index: 1;
+        text-align: start;
+      }
+    }
+  }
+  .mapscreen {
+    width: 100%;
+    height: 100%;
+    .marker {
+      background-color: pink;
+      .info-container {
+        width: 200px;
+        border-radius: 4px;
+        background-color: #1c1c1c;
+        padding: 10px;
+        position: absolute;
+        margin-top: -60px;
+        cursor: pointer;
+        z-index: 1;
+        .heading {
+          display: flex;
+          justify-content: space-between;
+          .title {
+            color: #fff;
+            width: auto;
+            font-size: 14px;
+            font-weight: bold;
+          }
+        }
+        .sub-info {
+          color: #fff;
+        }
+        :after {
+          content: "";
+          position: absolute;
+          bottom: -8px;
+          left: 15px;
+          border-top: 8px solid #1c1c1c;
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+        }
+      }
+
+      .marker-pin {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}

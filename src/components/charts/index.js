@@ -1,3 +1,3 @@
 import { BarChart } from "./barchart/barchart";
 
-export { BarChart };
+export default { BarChart };
