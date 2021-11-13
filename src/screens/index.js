@@ -24,7 +24,7 @@ function Main() {
       const results = await stationsInfos();
 
       console.log("station ", results);
-      setStations(results);
+      setStations(results.slice(0, 200));
       setMapCenter({
         lat: results[0]?.lat || Default_Lat,
         lng: results[0]?.lon || Default_Lon,

@@ -3,7 +3,7 @@ import { Search, charts } from "../../components";
 import { StationContext } from "../../constants/contexts";
 import "./style.scss";
 
-const { BarChart } = charts;
+const { BarChart, Linechart, Doughnutchart } = charts;
 
 export const GraphicalView = () => {
   const { stations } = useContext(StationContext);
@@ -20,7 +20,7 @@ export const GraphicalView = () => {
             options={stations}
           />
         </div>
-        <BarChart />
+        <Doughnutchart />
       </div>
     </div>
   );
