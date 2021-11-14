@@ -6,10 +6,11 @@ import "./style.scss";
 const { BarChart, Linechart, Doughnutchart } = charts;
 
 export const GraphicalView = () => {
-  const { stations } = useContext(StationContext);
+  const { stations, fewStations = [] } = useContext(StationContext);
   const onChange = (value) => {
     console.log("value ", value);
   };
+  const options = fewStations.length ? fewStations : stations;
   return (
     <div className="chart-container">
       <div className="chart-body">
@@ -17,7 +18,7 @@ export const GraphicalView = () => {
           <Search
             placeholder="Select station"
             onChange={onChange}
-            options={stations}
+            options={options}
           />
         </div>
         <Doughnutchart />

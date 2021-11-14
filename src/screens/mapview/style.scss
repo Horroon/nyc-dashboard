@@ -3,14 +3,22 @@
   .stationsearch {
     position: absolute;
     width: 100%;
-    text-align: center;
+    justify-content: center;
+    display: flex;
     .searchcontainer {
-      width: 50%;
-      margin: auto;
+      width: 27%;
       padding-top: 10px;
       .ant-select-show-search {
         z-index: 1;
         text-align: start;
+      }
+    }
+    .input-container {
+      z-index: 1;
+      width: 200px;
+      padding-top: 10px;
+      .input {
+        padding: 4px;
       }
     }
   }

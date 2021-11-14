@@ -37,17 +37,14 @@ const Markerview = ({ num_bikes_available, capacity, name, station_id }) => {
 };
 
 function MapScreen({ stations = [] }) {
-  const { mapCenter } = useContext(StationContext);
-  const defaultProps = {
-    zoom: 12,
-  };
+  const { mapCenter, mapzoom } = useContext(StationContext);
   console.log("mapscreen ", mapCenter);
   return (
     <div className="mapscreen">
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }} //AIzaSyCLmle3a-g-cwLnJktcDbOlcTyU-J-kMgk"
         center={mapCenter}
-        zoom={defaultProps.zoom}
+        zoom={mapzoom}
         onChildClick={(key, childprop) =>
           console.log("key ", key, " childprop ", childprop)
         }
