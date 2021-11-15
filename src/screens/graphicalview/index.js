@@ -4,10 +4,14 @@ import { Search, charts } from "../../components";
 import { StationContext } from "../../constants/contexts";
 import "./style.scss";
 
-const { BarChart, Linechart, Doughnutchart } = charts;
+const { Linechart, Doughnutchart } = charts;
 
 export const GraphicalView = () => {
-  const { stations = [], fewStations = [] } = useContext(StationContext);
+  const {
+    stations = [],
+    fewStations = [],
+    stationsHistory = [],
+  } = useContext(StationContext);
 
   const [selectedStation, selectStation] = useState({
     capacity: 0,
@@ -37,11 +41,22 @@ export const GraphicalView = () => {
     } else {
       stations.length && selectStation(stations[0]);
     }
-  }, [stations, selectStation]);
+  }, [stations, selectStation, fewStations]);
 
-  const LiveDoghnout = useCallback(() => {
+  const LiveDoughnut = useCallback(() => {
     return <Doughnutchart selectedStation={selectedStation} />;
   }, [selectedStation]);
+
+  const LiveChart = useCallback(() => {
+    const index = stationsHistory.findIndex(
+      (hstation) => hstation.station_id === selectedStation.station_id
+    );
+    let hStation = selectedStation;
+    if (index !== -1) {
+      hStation = stationsHistory[index];
+    }
+    return <Linechart station={hStation} />;
+  }, [selectedStation, stationsHistory]);
 
   const options = fewStations.length ? fewStations : stations;
   return (
@@ -56,10 +71,10 @@ export const GraphicalView = () => {
           />
         </div>
         <div className="doghnutchart">
-          <LiveDoghnout />
+          <LiveDoughnut />
         </div>
         <div className="linechart">
-          <Linechart />
+          <LiveChart />
         </div>
       </div>
     </div>

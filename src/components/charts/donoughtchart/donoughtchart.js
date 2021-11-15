@@ -7,7 +7,6 @@ export const Doughnutchart = ({ selectedStation }) => {
     num_bikes_available = 0,
     num_bikes_disabled = 0,
   } = selectedStation;
-
   const plugins = [
     {
       beforeDraw: (chart) => {

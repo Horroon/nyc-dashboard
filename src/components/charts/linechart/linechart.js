@@ -1,53 +1,68 @@
 import { Line } from "react-chartjs-2";
 
-export const Linechart = () => {
+const fetchBikes = (station, label) => {
+  const bikes = [];
+  if (station?.history) {
+    station.history.forEach((element) => {
+      bikes.push(element[label]);
+    });
+  }
+  return bikes;
+};
+
+const labels = [
+  "01",
+  "02",
+  "03",
+  "04",
+  "05",
+  "06",
+  "07",
+  "08",
+  "09",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "18",
+  "19",
+  "20",
+  "21",
+  "22",
+  "23",
+  "24",
+];
+
+export const Linechart = ({ station }) => {
+  const availableBikes = fetchBikes(station, "num_bikes_available");
+  const disabledBikes = fetchBikes(station, "num_bikes_disabled");
+
   return (
     <Line
       data={{
-        labels: [
-          "01",
-          "02",
-          "03",
-          "04",
-          "05",
-          "06",
-          "07",
-          "08",
-          "09",
-          "10",
-          "11",
-          "12",
-          "13",
-          "14",
-          "15",
-          "16",
-          "17",
-          "18",
-          "19",
-          "20",
-          "21",
-          "22",
-          "23",
-          "24",
-        ],
+        labels,
         datasets: [
           {
             label: "Available Bikes",
-            data: [2, 3, 2],
+            data: availableBikes,
             fill: "start",
-            backgroundColor: ["rgba(255, 206, 86, 0.2)"],
-            pointBackgroundColor: ["rgba(255, 206, 86, 0.2)"],
-            borderColor: ["rgba(255, 206, 86, 0.2)"],
-            pointBorderColor: ["rgba(255, 206, 86, 0.2)"],
+            backgroundColor: ["rgba(134, 226, 213, 1)"],
+            pointBackgroundColor: ["rgba(134, 226, 213, 1)"],
+            borderColor: ["rgba(134, 226, 213, 1)"],
+            pointBorderColor: ["rgba(134, 226, 213, 1)"],
           },
           {
-            label: "Unavailable Bikes",
-            data: [2, 4, 5],
+            label: "Disabled Bikes",
+            data: disabledBikes,
             fill: "start",
-            borderColor: ["rgba(54, 162, 235, 0.2)"],
-            backgroundColor: ["rgba(54, 162, 235, 0.2)"],
-            pointBackgroundColor: ["rgba(54, 162, 235, 0.2)"],
-            pointBorderColor: ["rgba(54, 162, 235, 0.2)"],
+            borderColor: "red",
+            backgroundColor: "red",
+            pointBackgroundColor: "red",
+            pointBorderColor: "red",
           },
         ],
       }}

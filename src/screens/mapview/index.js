@@ -8,6 +8,7 @@ export const MapView = () => {
   const {
     stations = [],
     fewStations = [],
+    mapCenter,
     setMapCenter,
     showNearestStations,
   } = useContext(StationContext);
@@ -31,6 +32,7 @@ export const MapView = () => {
       <div className="stationsearch">
         <div className="searchcontainer">
           <Search
+            selectedValue={mapCenter.station_id}
             placeholder="Select station"
             onChange={onStationChange}
             options={visibleStations}

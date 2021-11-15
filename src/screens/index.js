@@ -7,6 +7,7 @@ import { MapView } from "./mapview";
 import { stationsInfos } from "../utils/getstations";
 import { PointsDistance } from "../utils/findpointsdistance";
 import "./style.scss";
+import { UpdateHistory } from "../utils/UpdateHistory";
 
 const Default_Lat = 40.754932;
 const Default_Lon = -73.984016;
@@ -21,16 +22,23 @@ function Main() {
   });
   const [mapzoom, setMapZoom] = useState(Default_zoom);
   const [fewStations, setFewStations] = useState([]);
+  const [stationsHistory, setStationsHistory] = useState([]);
+
+  const updateHistory = (stations) => {
+    setStationsHistory(UpdateHistory({ history: stationsHistory, stations }));
+  };
 
   const fetchStations = async () => {
     try {
       const results = await stationsInfos();
-      setStations(results.slice(0, 700));
+      const fixedStations = results.slice(0, 700);
+      setStations(fixedStations);
       setMapCenter({
-        lat: results[0]?.lat || Default_Lat,
-        lng: results[0]?.lon || Default_Lon,
-        station_id: results[0]?.station_id,
+        lat: mapCenter.lat || fixedStations[0]?.lat || Default_Lat,
+        lng: mapCenter.lng || fixedStations[0]?.lon || Default_Lon,
+        station_id: mapCenter.station_id || fixedStations[0]?.station_id,
       });
+      updateHistory(fixedStations);
     } catch (e) {
       console.log("Error ", e);
     }
@@ -72,7 +80,10 @@ function Main() {
 
   useEffect(() => {
     fetchStations();
+    const interval = setInterval(fetchStations, 60000);
+    return () => clearInterval(interval);
   }, []);
+
   return (
     <StationContext.Provider
       value={{
@@ -82,6 +93,7 @@ function Main() {
         fewStations,
         showNearestStations,
         mapzoom,
+        stationsHistory,
       }}
     >
       <div>

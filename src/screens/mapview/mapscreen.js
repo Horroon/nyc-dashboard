@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
-import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
+import { VscCircleFilled } from "react-icons/vsc";
 import { FindExactColor } from "../../utils/findexactcolor";
 import "./style.scss";
 import { StationContext } from "../../constants/contexts";
@@ -12,7 +12,7 @@ const Markerview = ({ num_bikes_available, capacity, name, station_id }) => {
   useEffect(() => {
     mapCenter.station_id === station_id ? setModal(true) : setModal(false);
     return () => setModal(false);
-  }, [mapCenter.station_id]);
+  }, [mapCenter.station_id, station_id]);
 
   return (
     <div className="marker">
@@ -28,7 +28,7 @@ const Markerview = ({ num_bikes_available, capacity, name, station_id }) => {
         </div>
       )}
 
-      <FaMapMarkerAlt
+      <VscCircleFilled
         color={FindExactColor({ numberofbikes: num_bikes_available, capacity })}
         className="marker-pin"
         onClick={() => setModal(true)}
@@ -39,16 +39,12 @@ const Markerview = ({ num_bikes_available, capacity, name, station_id }) => {
 
 function MapScreen({ stations = [] }) {
   const { mapCenter, mapzoom } = useContext(StationContext);
-  console.log("mapscreen ", mapCenter);
   return (
     <div className="mapscreen">
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }} //AIzaSyCLmle3a-g-cwLnJktcDbOlcTyU-J-kMgk"
+        bootstrapURLKeys={{ key: "" }} //don't have key
         center={mapCenter}
         zoom={mapzoom}
-        onChildClick={(key, childprop) =>
-          console.log("key ", key, " childprop ", childprop)
-        }
       >
         {stations.map((station) => (
           <Markerview lat={station.lat} lng={station.lon} {...station} />
