@@ -28,7 +28,7 @@ export const MapView = () => {
   };
 
   return (
-    <div className="mapcontainer" style={{ height: "90vh" }}>
+    <div className="mapcontainer">
       <div className="stationsearch">
         <div className="searchcontainer">
           <Search

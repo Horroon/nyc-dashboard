@@ -1,5 +1,5 @@
 .mapcontainer {
-  height: 90vh;
+  height: 94vh;
   .stationsearch {
     position: absolute;
     width: 100%;
@@ -65,5 +65,11 @@
         height: 50px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mapcontainer {
+    height: 145vh;
   }
 }

@@ -59,6 +59,7 @@ export const GraphicalView = () => {
   }, [selectedStation, stationsHistory]);
 
   const options = fewStations.length ? fewStations : stations;
+
   return (
     <div className="chart-container">
       <div className="chart-body">
