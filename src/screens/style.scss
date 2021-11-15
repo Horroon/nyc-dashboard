@@ -12,10 +12,18 @@
     .chart-body {
       display: block;
       box-sizing: border-box;
-      height: 482px;
       width: 300px;
       background: #6d656b;
-      padding-bottom: 40px;
+      padding: 40px;
+      .doghnutchart {
+        height: 342px;
+      }
+      .linechart {
+        height: 280px;
+        background: azure;
+        padding: 6px;
+        border-radius: 9px;
+      }
     }
   }
 }

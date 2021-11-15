@@ -25,7 +25,7 @@ function Main() {
   const fetchStations = async () => {
     try {
       const results = await stationsInfos();
-      setStations(results.slice(0, 200));
+      setStations(results.slice(0, 700));
       setMapCenter({
         lat: results[0]?.lat || Default_Lat,
         lng: results[0]?.lon || Default_Lon,

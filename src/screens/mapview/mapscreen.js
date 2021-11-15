@@ -11,6 +11,7 @@ const Markerview = ({ num_bikes_available, capacity, name, station_id }) => {
   const { mapCenter } = useContext(StationContext);
   useEffect(() => {
     mapCenter.station_id === station_id ? setModal(true) : setModal(false);
+    return () => setModal(false);
   }, [mapCenter.station_id]);
 
   return (
