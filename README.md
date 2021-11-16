@@ -15,8 +15,15 @@ Static station information, such as, its location is available here:
   <ol>
   
 <h2>Following features are in this projects.</h2>
-
-Search for both map stations and graphs as well.
-I have used two tests.
-  1- FindExactColor method has its test.
-  2- Search component has its test for testing placeholder only.
+<p>
+    Search for both map stations and graphs as well.
+    </p>
+    <h5>
+    I have used two tests.
+    </h5>
+<ul>
+  <li>FindExactColor method has its test.</li>
+  <li>
+    Search component has its test for testing placeholder only.
+  </li>
+    </ul>
