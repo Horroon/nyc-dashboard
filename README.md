@@ -16,7 +16,14 @@ Static station information, such as, its location is available here:
   
 <h2>Following features are in this projects.</h2>
 <p>
-    Search for both map stations and graphs as well.
+    Search for both map stations and graphs as well. 
+    </p>
+<p>
+    Donut graph which shows the current status of the station.
+  <strong>Capacity</strong>
+  <strong>Available bikes in green color</strong>
+  <strong>Unavailable bikes in red color</strong>
+  <strong>Disabled bikes in gray color</strong>
     </p>
     <h5>
     I have used two tests.
