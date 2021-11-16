@@ -12,6 +12,8 @@ export const Search = ({
   const LiveSearch = useCallback(() => {
     return (
       <Select
+        id="searchuniqu"
+        data-tes
         showSearch
         defaultValue={selectedValue}
         placeholder={placeholder}

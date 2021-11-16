@@ -43,6 +43,7 @@ export const Linechart = ({ station }) => {
 
   return (
     <Line
+      data-test
       data={{
         labels,
         datasets: [

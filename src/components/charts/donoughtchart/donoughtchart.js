@@ -5,6 +5,7 @@ export const Doughnutchart = ({ selectedStation }) => {
     capacity = 0,
     num_bikes_available = 0,
     num_bikes_disabled = 0,
+    name = "",
   } = selectedStation;
   const plugins = [
     {
@@ -29,6 +30,9 @@ export const Doughnutchart = ({ selectedStation }) => {
 
   return (
     <Doughnut
+      title={name}
+      id="donoughnut"
+      className="donoughnut"
       data={{
         labels: ["Disabled", "Available", "Unavailable"],
         datasets: [
