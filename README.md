@@ -20,11 +20,22 @@ Static station information, such as, its location is available here:
     </p>
 <p>
     Donut graph which shows the current status of the station.
-  <strong>Capacity</strong>
-  <strong>Available bikes in green color</strong>
-  <strong>Unavailable bikes in red color</strong>
-  <strong>Disabled bikes in gray color</strong>
+  <ul>
+    <li>
+       <strong>Capacity</strong>    
+    </li>
+    <li>
+        <strong>Available bikes in green color</strong>  
+    </li>
+    <li>
+       <strong>Unavailable bikes in red color</strong>
+    </li>
+    <li>
+         <strong>Disabled bikes in gray color</strong>
+    </li>
+    </ul>
     </p>
+  
     <h5>
     I have used two tests.
     </h5>
