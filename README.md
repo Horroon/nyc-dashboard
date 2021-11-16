@@ -35,7 +35,18 @@ Static station information, such as, its location is available here:
     </li>
     </ul>
     </p>
- 
+ <p>
+    Area graph which shows the history status of the station.
+  <ul>
+    <li>
+       <strong>Disabled bikes</strong>    
+    </li>
+    <li>
+        <strong>Available bikes</strong>  
+    </li>
+    </ul>
+    </p>
+    
  <h5>
         I have used two tests.
  </h5>
