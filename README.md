@@ -5,7 +5,7 @@ Static station information, such as, its location is available here:</p>
 <h2>Follow these steps to run this project.</h2>
 <ol>
   <li>
-    npm install after cloning the projects.
+    npm install after cloning the project.
   </li>
   <li>
     npm start to run the project.
@@ -15,7 +15,7 @@ Static station information, such as, its location is available here:</p>
   </li>
   <ol>
   
-<h2>Following features are in this projects.</h2>
+<h2>Following features are in this project.</h2>
 <p>
     Search for both map stations and graphs as well. 
     </p>
